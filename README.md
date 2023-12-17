@@ -1,11 +1,11 @@
-# Rick & Morty Episode Finder By Character
+# Yeba Inus
 ### Author: [silvershel](https://github.com/silvershel)
 
 ## Description
-This one page app uses the [Rick & Morty API](https://rickandmortyapi.com/) to find an episode based on a character search.
+An inspirational poster generator using random images of shiba inus (https://shibe.online/) and Kanye West (aka Ye) quotes (https://kanye.rest/).
 
 ## Usage
-Type a character name into the search box. The results will load a card with character info including an episode list. The app will save up to 5 recent search records on the page. You can also clear the page and begin a new search.
+The "Make A Poster" button will generate a poster that combines a random shiba inu image and a random Kanye West quote. If you like the poster that is created you can save it to a gallery. You also clear the posters from the gallery if you change your mind.
 
 ## License
 ### MIT License (https://choosealicense.com/licenses/mit/)
