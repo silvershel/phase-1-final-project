@@ -7,6 +7,9 @@ An inspirational poster generator using random images of shiba inus (https://shi
 ## Usage
 The "Make A Poster" button will generate a poster that combines a random shiba inu image and a random Kanye West quote. If you like the poster that is created you can save it to a gallery. You also clear the posters from the gallery if you change your mind.
 
+### Dark Mode
+There is an option to activate dark mode by pressing "d" on your keyboard. When the app is in dark mode it only returns quotes that use a specific obscenity.
+
 ## License
 ### MIT License (https://choosealicense.com/licenses/mit/)
 
