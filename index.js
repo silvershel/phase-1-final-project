@@ -12,11 +12,28 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(imgData => {
           let image = imgData; //add .message if using backup API
           
-          // Fetches image from the second API
-          fetch(`https://api.kanye.rest/`)
+          // Fetches quote from JSON file
+          fetch(`http://localhost:3000/quotes`)
           .then(resp => resp.json())
           .then(quoteData => {
-            let words = quoteData.quote;
+            let randomIndex = Math.floor(Math.random() * quoteData.length);
+            let quotes = quoteData[randomIndex].quote;
+            
+            // when in dark mode...
+            let darkModeQuotes = quoteData.filter((quoteObj) => {
+              return quoteObj.quote.includes("fuck");
+            })
+            let randomDarkModeIndex = Math.floor(Math.random() * darkModeQuotes.length);
+            let randomDarkModeQuote = darkModeQuotes[randomDarkModeIndex].quote;
+            
+            // function to toggle quotes depending on regular or dark mode
+            function toggleQuotes() {
+              if (document.body.classList.contains("dark-mode")) {
+                return randomDarkModeQuote;
+              } else {
+                return quotes;
+              }
+            };
 
             // Create the poster
             let posterImage = document.createElement("img");
@@ -24,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             posterImage.src = image;
 
             let posterQuote = document.createElement("h2");
-            posterQuote.textContent = words;
+            posterQuote.textContent = toggleQuotes();
             
             let posterCredit = document.createElement("h3");
             posterCredit.textContent = "- Kanye West";
@@ -62,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("keydown", (e) => {
-    if (e.key === "d"); {
+    if (e.key === "d") {
         document.body.classList.toggle("dark-mode");
     }
 })
