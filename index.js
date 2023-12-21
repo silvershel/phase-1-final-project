@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
           .then(quoteData => {
             let randomIndex = Math.floor(Math.random() * quoteData.length);
             let quotes = quoteData[randomIndex].quote;
+            let credit = quoteData[randomIndex].credit;
+            let rating = quoteData[randomIndex].rating;
             
             // when in dark mode...
             let darkModeQuotes = quoteData.filter((quoteObj) => {
@@ -25,6 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             let randomDarkModeIndex = Math.floor(Math.random() * darkModeQuotes.length);
             let randomDarkModeQuote = darkModeQuotes[randomDarkModeIndex].quote;
+            let darkModeCredit = darkModeQuotes[randomDarkModeIndex].credit;
+            let darkModeRating = darkModeQuotes[randomDarkModeIndex].rating;
             
             // function to toggle quotes depending on regular or dark mode
             function toggleQuotes() {
@@ -32,6 +36,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 return randomDarkModeQuote;
               } else {
                 return quotes;
+              }
+            };
+
+            function toggleRating() {
+              if (document.body.classList.contains("dark-mode")) {
+                return darkModeRating;
+              } else {
+                return rating;
+              }
+            };
+
+            function toggleCredit() {
+              if (document.body.classList.contains("dark-mode")) {
+                return darkModeCredit;
+              } else {
+                return credit;
               }
             };
 
@@ -44,7 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
             posterQuote.textContent = toggleQuotes();
             
             let posterCredit = document.createElement("h3");
-            posterCredit.textContent = "- Kanye West";
+            posterCredit.textContent = `- ${toggleCredit()}`;
+
+            let posterRating = document.createElement("h4");
+            posterRating.textContent = `public rating: ${toggleRating()}`;
 
             // add to gallery button (and change to clear to delete poster).
             let favBtn = document.createElement("button");
@@ -66,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
             poster.appendChild(posterImage);
             poster.appendChild(posterQuote);
             poster.appendChild(posterCredit);
+            poster.appendChild(posterRating);
             poster.appendChild(favBtn);
 
             // Appends the poster to the container
